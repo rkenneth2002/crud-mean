@@ -1,0 +1,48 @@
+<div class="shadow p-4 border">
+  <div class="py-3 flex items-center justify-between">
+    <h1>Products List</h1>
+    <button mat-raised-button color="primary" routerLink="/products/create">
+      Add Product
+    </button>
+  </div>
+  <table class="">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Product Name</th>
+        <th>Color</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (product of products; track $index ) {
+      <tr>
+        <td>{{ $index + 1 }}.</td>
+        <td>{{ product.prod_name }}</td>
+        <td>{{ product.prod_color }}</td>
+        <td>{{ product.prod_category }}</td>
+        <td>{{ product.prod_price }}</td>
+        <td class="">
+          <button
+            mat-raised-button
+            color="accent"
+            [routerLink]="'/products/' + product._id"
+          >
+            Edit
+          </button>
+          <button
+            mat-raised-button
+            color="warn"
+            class="ml-2"
+            (click)="deleteProduct(product._id!)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

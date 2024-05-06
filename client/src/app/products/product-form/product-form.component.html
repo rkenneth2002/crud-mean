@@ -1,0 +1,39 @@
+<div class="shadow border p-4">
+  <div *ngIf="editProdId">
+    <h2>Edit Product</h2>
+  </div>
+  <div *ngIf="!editProdId">
+    <h2>Add Product</h2>
+  </div>
+
+  <form [formGroup]="userForm" class="flex flex-wrap">
+    <mat-form-field class="w-full">
+      <mat-label>Product Name</mat-label>
+      <input type="text" matInput formControlName="prod_name" />
+    </mat-form-field>
+    <mat-form-field class="w-full">
+      <mat-label>Color</mat-label>
+      <input type="text" matInput formControlName="prod_color" />
+    </mat-form-field>
+    <mat-form-field class="w-full">
+      <mat-label>Category</mat-label>
+      <input type="text" matInput formControlName="prod_category" />
+    </mat-form-field>
+    <mat-form-field class="w-full">
+      <mat-label>Price</mat-label>
+      <input type="text" matInput formControlName="prod_price" />
+    </mat-form-field>
+
+    <div *ngIf="editProdId">
+      <button mat-raised-button color="primary" (click)="updateProduct()">
+        Update
+      </button>
+    </div>
+    <div *ngIf="!editProdId">
+      <button mat-raised-button color="primary" (click)="createProduct()">
+        Save
+      </button>
+    </div>
+    <button mat-raised-button routerLink="/products" class="ml-4">Back</button>
+  </form>
+</div>
